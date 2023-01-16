@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.18.xsd">
+
+    <changeSet id="1" author="noemi">
+        <createTable tableName="reservation">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="datada" type="date"/>
+            <column name="dataa" type="date"/>
+            <column name="idroom" type="integer"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="noemi">
+        <sql>
+            INSERT into reservation (datada, dataa, idroom)
+            values ('2022-12-20', '2023-01-12', 1);
+        </sql>
+    </changeSet>
+    <changeSet id="3" author="noemi">
+        <sql>
+            INSERT into reservation (datada, dataa, idroom)
+            values ('2023-01-15', '2023-02-01',  1);
+        </sql>
+    </changeSet>
+    <changeSet id="4" author="noemi">
+        <sql>
+            INSERT into reservation (datada, dataa, idroom)
+            values ('2023-01-09', '2023-01-13',  2);
+        </sql>
+    </changeSet>
+    
+    <changeSet id="5" author="noemi">
+        <renameColumn
+                tableName="reservation"
+                oldColumnName="idroom"
+                newColumnName="room" columnDataType="varchar(255)"/>
+    </changeSet>
+    <changeSet id="6" author="noemi">
+        <sql>
+            UPDATE reservation
+            SET room = 203
+            WHERE room = 1
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="noemi">
+        <sql>
+            UPDATE reservation
+            SET room = 321
+            WHERE room = 2
+        </sql>
+    </changeSet>
+    
+</databaseChangeLog>
